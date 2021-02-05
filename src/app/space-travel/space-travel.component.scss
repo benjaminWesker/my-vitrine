@@ -1,0 +1,22 @@
+$space : rgba(48, 2, 89,.8);
+$ligth-space: rgba(70, 55, 110,.8);
+$dark-space: rgba(31, 22, 56,.8);
+
+$deep-space : rgba(15, 1, 28,0);
+
+$mars-size: 50px;
+
+.container{
+  width: 100%;
+  height:100%;
+
+
+  background: linear-gradient(217deg, $space, $deep-space 50%),
+              linear-gradient(127deg, $ligth-space,  $deep-space 25%),
+              linear-gradient(27deg, $space, $deep-space 50%),
+              linear-gradient(336deg,  $dark-space, $deep-space  25%);
+
+
+}
+
+
