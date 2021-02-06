@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -14,9 +14,6 @@ export class BannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let div: HTMLElement | null | undefined;
-    div = document.getElementById("burgerBtn");
-    div?.classList.add('init');
 
   }
 
@@ -33,8 +30,6 @@ export class BannerComponent implements OnInit {
           this.freeBtnBurger = true;
         },400
         );
-        /* lance l'animation du menu mobile*/
-        this.launchAnimationMenuMobile();
         /* on change l'etat du menu à chaque clic */
         this.toggleMenuMobileIsOpen();
         /* lance l'animation du bouton burger*/
@@ -48,8 +43,6 @@ export class BannerComponent implements OnInit {
   onToggleLink(){
     /* on force le menu ouvert */
     this.menuMobileIsOpen = true;
-    /* lance l'animation du menu mobile*/
-    this.launchAnimationMenuMobile();
 
     let burgerBtn: HTMLElement | null | undefined;
     burgerBtn = document.getElementById("burgerBtn");
@@ -58,13 +51,7 @@ export class BannerComponent implements OnInit {
       /* on clean toutes les classes de burgerBtn */
       const clr = ['close', 'closing','open', 'opening'];
       burgerBtn.classList.remove(...clr);
-      /* puis on ajoute la classe clos pour afficher l'animation de fermeture du bouton burger */
-      burgerBtn.classList.add('init');
     }
-
-    /* lance l'animation du bouton burger*/
-  //  this.launchAnimationBurgerBtn();
-    /* on force le menu fermé */
     this.menuMobileIsOpen = false;
 
   }
@@ -79,7 +66,7 @@ export class BannerComponent implements OnInit {
     div = document.getElementById("burgerBtn");
 
     if(div){
-        if( div.classList.contains('open')){
+         if(this.menuMobileIsOpen){
               /*
                   ouverture du menu => animation croix
               */
@@ -93,7 +80,7 @@ export class BannerComponent implements OnInit {
           },300);
 
         }
-        else if (div.classList.contains('close') ){
+        else {
               /*
                   fermture du menu => animation bar
               */
@@ -106,56 +93,11 @@ export class BannerComponent implements OnInit {
             }
           },300);
 
-
-
       }
-      else if(div.classList.contains('init')){
-        /*
-            ouverture du menu => animation bar
-        */
-        div.classList.remove('init');
-        div.classList.add('closing');
-        setTimeout( ()=>{
-          if(div){
-             div.classList.remove('closing');
-            div.classList.add('close');
-          }
-        },300);
-      }
-      else{
-        div.classList.add('init');
-      }
-
     }
 
   }
-  /**
-   * En fonction de la classe de id="burgerBtn" lance l'animation
-   *  de fermeture; ouverture du menu déroulant pour mobile
-   */
-  launchAnimationMenuMobile(){
-    let div: HTMLElement | null | undefined;
-    div = document.getElementById("menuMobileToDisplay");
 
-    if(div)
-    {
-        if (!this.menuMobileIsOpen){
-          div.classList.add('show');
-          div.classList.remove('hide');
-          div.style.display = "block";
-        }
-        else{
-          div.classList.add('hide');
-          div.classList.remove('show');
-          /*=== decommenter si on veut une animation lors de la fermeture ===*/
-          //setTimeout( ()=>{
-          //if(div){
-                div.style.display = "none";
-          //}
-          //},300);
-        }
-    }
-  }
   /**
   *   inverse l'etat de menuMobileIsOpen
   */
