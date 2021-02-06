@@ -17,8 +17,8 @@ $banner-height :100px;
 $color-menu-burger: white;
 $color-linkbanner: rgba(248, 247, 247, 0.911);
 
-*{
-  outline: 0;
+a{
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header_container{
