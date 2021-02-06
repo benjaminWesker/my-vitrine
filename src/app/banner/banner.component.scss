@@ -17,10 +17,10 @@ $banner-height :100px;
 $color-menu-burger: white;
 $color-linkbanner: rgba(248, 247, 247, 0.911);
 
-a{
+*{
   -webkit-tap-highlight-color: transparent;
 }
-
+// a deplacer dans les classes concerné
 .header_container{
   background: $color-banner-background;
 
