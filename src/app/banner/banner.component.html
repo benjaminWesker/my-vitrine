@@ -13,15 +13,15 @@
       <div class="site_nav">
               <nav>
                   <a routerLink="">home</a>
-                  <a routerLink="/among-tree">among tree</a>
-                  <a routerLink="/circle">circle</a>
-                  <a routerLink="/space-travel">space-travel</a>
+                  <a routerLink="/presentation">présentation</a>
+                  <a routerLink="/parcours">parcours</a>
+                  <a routerLink="/contact">contacts</a>
               </nav>
       </div>
 
       <div class="site_nav_mobile">
 
-        <div class="btn_menu_mobile" id="burgerBtn" (click)="onToggleMenuBurgerBtn()">
+        <div class="btn_menu_mobile" [class]="btnMenuMobileState" id="burgerBtn" (click)="onToggleMenuBurgerBtn()">
 
           <span class="lines"></span>
 
@@ -30,9 +30,9 @@
         <div class="site_nav_link_mobile" [class]=" menuMobileIsOpen ? 'show' : 'hide' " id="menuMobileToDisplay" (click)="onToggleLink()" >
           <ul>
             <li> <a   routerLink="">home</a></li>
-            <li> <a   routerLink="/among-tree">among tree</a></li>
-            <li> <a   routerLink="/circle">circle</a></li>
-            <li> <a   routerLink="/space-travel">space-travel</a></li>
+            <li> <a   routerLink="/presentation">présentation</a></li>
+            <li> <a   routerLink="/parcours">parcours</a></li>
+            <li> <a   routerLink="/contact">contacts</a></li>
           </ul>
         </div>
 

@@ -11,7 +11,9 @@ export class BannerComponent implements OnInit {
   /* on évite les appuis trop rapide sur le bouton */
   freeBtnBurger = true;
 
-  constructor() { }
+  btnMenuMobileState = "";
+
+  constructor() {}
 
   ngOnInit(): void {
 
@@ -28,8 +30,7 @@ export class BannerComponent implements OnInit {
         /* on évite les appuis trop rapide sur le bouton */
         window.setTimeout( () => {
           this.freeBtnBurger = true;
-        },400
-        );
+        },400);
         /* on change l'etat du menu à chaque clic */
         this.toggleMenuMobileIsOpen();
         /* lance l'animation du bouton burger*/
@@ -44,14 +45,7 @@ export class BannerComponent implements OnInit {
     /* on force le menu ouvert */
     this.menuMobileIsOpen = true;
 
-    let burgerBtn: HTMLElement | null | undefined;
-    burgerBtn = document.getElementById("burgerBtn");
-
-    if(burgerBtn){
-      /* on clean toutes les classes de burgerBtn */
-      const clr = ['close', 'closing','open', 'opening'];
-      burgerBtn.classList.remove(...clr);
-    }
+    this.btnMenuMobileState = "";
     this.menuMobileIsOpen = false;
 
   }
@@ -62,39 +56,27 @@ export class BannerComponent implements OnInit {
    */
   launchAnimationBurgerBtn(){
 
-    let div: HTMLElement | null | undefined;
-    div = document.getElementById("burgerBtn");
 
-    if(div){
-         if(this.menuMobileIsOpen){
-              /*
-                  ouverture du menu => animation croix
-              */
-          div.classList.remove('open');
-          div.classList.add('closing');
-          setTimeout( ()=>{
-            if(div){
-               div.classList.remove('closing');
-              div.classList.add('close');
-            }
-          },300);
+      if(this.menuMobileIsOpen){
+           /*
+               ouverture du menu => animation croix
+           */
+      this.btnMenuMobileState = "closing";
+       setTimeout( ()=>{
+           this.btnMenuMobileState = "close";
+       },300);
 
-        }
-        else {
-              /*
-                  fermture du menu => animation bar
-              */
-          div.classList.remove('close');
-          div.classList.add('opening');
-          setTimeout( ()=>{
-            if(div){
-               div.classList.remove('opening');
-              div.classList.add('open');
-            }
-          },300);
+     }
+     else {
+           /*
+               fermture du menu => animation bar
+           */
+       this.btnMenuMobileState = "opening";
+       setTimeout( ()=>{
+           this.btnMenuMobileState = "open";
+       },300);
 
-      }
-    }
+   }
 
   }
 

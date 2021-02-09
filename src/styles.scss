@@ -1,7 +1,8 @@
-body{
-  background-color: rgb(243, 231, 231);
-  margin : 0;
+@import "~src/_color";
 
+body{
+  background-color: $app_main_color;
+  margin : 0;
 }
 
 
